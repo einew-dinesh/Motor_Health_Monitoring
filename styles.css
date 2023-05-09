@@ -12,13 +12,20 @@ body{
     
     align-items: center;
 }
-
+.details{
+    padding: 15px;
+    font-size: 20px;
+    text-align: center;
+    background: #ddd;
+    margin-bottom:10px;
+    width: 100%;
+}
 .header {
-    padding: 30px;
+    padding: 25px;
     font-size: 40px;
     text-align: center;
     background: #ddd;
-    margin-bottom:35px;
+    margin-bottom:15px;
     width: 100%;
   }
 

@@ -16,6 +16,7 @@ var start =0;
 var stop = 246;
 var samplingfrequency= 493;
 var samples = 1024;
+var fundamentalfreq;
 
 // reference your database
 var fftarr = firebase.database().ref("fft/fft_arr");
@@ -29,9 +30,10 @@ fftmeta.on('value', (snapshot) =>{
         
     });
     console.log(meta);
-    var stop = meta[0]/2;
-    var samplingfrequency= meta[1];
-    var samples = meta[0];
+   
+    fundamentalfreq = meta[0];
+
+    document.getElementById("fundamentalfreq").innerHTML = Math.round(fundamentalfreq*60) + " RPM";
 });
 
 
