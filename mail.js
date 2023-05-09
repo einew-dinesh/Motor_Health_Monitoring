@@ -13,9 +13,9 @@ const firebaseConfig = {
 // initialize firebase
 firebase.initializeApp(firebaseConfig);
 var start =0;
-    var stop = 256;
-    var samplingfrequency= 500;
-    var samples = 512;
+var stop = 246;
+var samplingfrequency= 493;
+var samples = 1024;
 
 // reference your database
 var fftarr = firebase.database().ref("fft/fft_arr");
@@ -48,8 +48,12 @@ fftarr.on('value', (snapshot) => {
     });
 
 
-    const temp = data[0].concat(data[1]);
-    const amplitudefft = temp.concat(data[2]);
+    var temp = data[0].concat(data[1]);
+    temp = temp.concat(data[2]);
+    temp = temp.concat(data[3]);
+    temp = temp.concat(data[4]);
+    temp = temp.concat(data[5]);
+    const amplitudefft = temp.concat(data[6]);
     ///////////////////////////
 
     
@@ -61,7 +65,8 @@ fftarr.on('value', (snapshot) => {
         (value, index) => start + index * step
         );
 
-    arre = arre.slice(0, stop);
+    arre = arre.slice(0, 512);
+    
     
     var frequency =arre.map(function(e){return e.toString()});
     
@@ -99,7 +104,7 @@ fftarr.on('value', (snapshot) => {
                     },
                     beginAtZero: true,
                     min: 0,
-                    max: 20,
+                    max: 400,
                 },
                 x: {
                     title: {
